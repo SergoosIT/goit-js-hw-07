@@ -29,15 +29,15 @@ function createGalleryMarkup(images) {
     .join('');
 }
 
-function onGalleryClick(even) {
-  even.preventDefault();
+function onGalleryClick(event) {
+  event.preventDefault();
 
-  if (even.target === even.currentTarget) {
+  if (event.target === event.currentTarget) {
     return;
   }
 
   instance = basicLightbox.create(
-    `<img src="${even.target.dataset.source}" width="1280">`,
+    `<img src="${event.target.dataset.source}" width="1280">`,
     {
       onShow: (instance) => {
         window.addEventListener('keydown', onGalleryEscKeyDown);
@@ -51,8 +51,8 @@ function onGalleryClick(even) {
   instance.show();
 }
 
-function onGalleryEscKeyDown(even) {
-  if (even.code === 'Escape') {
+function onGalleryEscKeyDown(event) {
+  if (event.code === 'Escape') {
     instance.close();
   }
 }
